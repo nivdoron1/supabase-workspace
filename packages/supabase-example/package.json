@@ -1,0 +1,28 @@
+{
+    "name": "@supabase-workspace/supabase-example",
+    "version": "1.0.0",
+    "description": "Supabase client and types for example instance",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "db:push": "supabase db push",
+        "db:types": "npx supabase gen types typescript --project-id abc123xyz --local > ../supabase-core/src/types.ts",
+        "db:generate": "yarn run db:types && node ../supabase-core/dist/generate.js",
+        "db:master": "yarn db:push && yarn db:generate"
+    },
+    "keywords": [
+        "supabase",
+        "example"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "@supabase-workspace/supabase-core": "^1.0.0",
+        "@supabase/supabase-js": "^2.84.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.3.0",
+        "vite": "^5.0.0"
+    }
+}

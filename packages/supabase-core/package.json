@@ -1,0 +1,22 @@
+{
+    "name": "@supabase-workspace/supabase-core",
+    "version": "1.0.0",
+    "description": "Core Supabase client and types for Social workspace",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch"
+    },
+    "keywords": [
+        "supabase",
+        "client"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "@supabase/supabase-js": "^2.84.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.3.0"
+    }
+}
