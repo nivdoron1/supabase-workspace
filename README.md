@@ -16,11 +16,11 @@ packages/
 │   │   └── index.ts            # Exports types & services
 │   └── package.json
 │
-├── supabase-{service name}/        # Wedding Supabase instance
-│   ├── .env                    # Wedding credentials
+├── supabase-{service name}/        # Supabase instance
+│   ├── .env                    # Supabase credentials
 │   ├── src/
-│   │   ├── client.ts           # Wedding Supabase client
-│   │   └── index.ts            # Exports wedding client
+│   │   ├── client.ts           # Supabase client
+│   │   └── index.ts            # Exports Supabase client
 │   └── package.json
 ```
 
@@ -33,10 +33,10 @@ packages/
 - No Supabase client (instance-agnostic)
 
 **@supabase-workspace/supabase-{service name}**
-- Has its own `.env` file with wedding credentials
-- Exports the wedding Supabase client
+- Has its own `.env` file with Supabase credentials
+- Exports the Supabase client
 - Depends on `@supabase-workspace/supabase-core` for types
-- Scripts to generate types from wedding instance
+- Scripts to generate types from Supabase instance
 
 **Apps (e.g., apps/wedding)**
 - Import client from `@supabase-workspace/supabase-{service name}`
@@ -52,10 +52,10 @@ packages/
 
 ## 🔧 Package Scripts
 
-### In supabase-wedding package:
+### In supabase-{service name} package:
 
 ```bash
-# Generate TypeScript types from wedding Supabase
+# Generate TypeScript types from Supabase instance
 npm run db:types
 
 # Generate table services using supabase-core's generate script
@@ -142,3 +142,37 @@ Your workspace is now organized with clean separation between:
 - **Shared utilities** (`supabase-core`)
 - **Instance-specific clients** (`supabase-wedding`)
 - **Applications** that consume them
+
+## 🛠️ CLI Tool
+
+This workspace includes a CLI tool to scaffold new workspaces or test the setup.
+
+### Usage
+
+To run the CLI from the root of this workspace:
+
+```bash
+yarn create-workspace <workspace-name>
+```
+
+This will:
+1. Create a new directory with the specified name
+2. Initialize a Yarn workspace structure
+3. Generate `packages/supabase-core` with all shared utilities
+4. Prompt to create an example Vite app
+5. Configure `package.json` and generate `README.md`
+
+### CLI Development
+
+The CLI source code is located in `supabase-workspace-cli/`. To modify it:
+
+1. Edit files in `supabase-workspace-cli/src/`
+2. Build the CLI:
+   ```bash
+   cd supabase-workspace-cli
+   npm run build
+   ```
+3. Test your changes:
+   ```bash
+   yarn create-workspace test-workspace
+   ```

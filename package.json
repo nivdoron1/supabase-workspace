@@ -8,13 +8,14 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "supabase-workspace-cli"
   ],
   "scripts": {
     "build": "yarn workspaces foreach --all run build",
-    "dev": "yarn workspace wedding-app run dev",
     "clean": "yarn workspaces foreach --all run clean || true",
-    "new supabase": "./scripts/new-supabase.sh"
+    "new-supabase": "./scripts/generate-supabase-package.sh",
+    "create-workspace": "node supabase-workspace-cli/dist/cli.js"
   },
   "devDependencies": {
     "typescript": "^5.3.0",

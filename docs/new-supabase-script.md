@@ -20,13 +20,13 @@ I've created an automation script to quickly set up new Supabase instance packag
 Create a new Supabase instance with one command:
 
 ```bash
-yarn new supabase <name> --project-id <id> --anon-key <key> [OPTIONS]
+yarn new-supabase <name> --project-id <id> --anon-key <key> [OPTIONS]
 ```
 
 ### Example
 
 ```bash
-yarn new supabase events \
+yarn new-supabase events \
   --project-id abc123xyz \
   --anon-key eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... \
   --db-password my_secure_password \
