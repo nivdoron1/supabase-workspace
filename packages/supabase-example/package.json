@@ -1,28 +1,34 @@
 {
-    "name": "@supabase-workspace/supabase-example",
-    "version": "1.0.0",
-    "description": "Supabase client and types for example instance",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "build": "tsc",
-        "dev": "tsc --watch",
-        "db:push": "supabase db push",
-        "db:types": "npx supabase gen types typescript --project-id abc123xyz --local > ../supabase-core/src/types.ts",
-        "db:generate": "yarn run db:types && node ../supabase-core/dist/generate.js",
-        "db:master": "yarn db:push && yarn db:generate"
-    },
-    "keywords": [
-        "supabase",
-        "example"
-    ],
-    "license": "MIT",
-    "dependencies": {
-        "@supabase-workspace/supabase-core": "^1.0.0",
-        "@supabase/supabase-js": "^2.84.0"
-    },
-    "devDependencies": {
-        "typescript": "^5.3.0",
-        "vite": "^5.0.0"
-    }
+  "name": "@supabase-workspace/supabase-example",
+  "version": "1.0.0",
+  "description": "Supabase client for example",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "db:push": "npx drizzle-kit generate && sleep 3 && supabase db push",
+    "db:types": "npx supabase gen types typescript --project-id abc123 --local > ../supabase-core/src/types.ts",
+    "db:generate": "yarn db:types && node ../supabase-core/dist/generate.js",
+    "db:master": "yarn db:push && yarn db:generate",
+    "add-stripe": "node ../stripe-core/dist/generate.js",
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:push": "drizzle-kit push",
+    "drizzle:studio": "drizzle-kit studio"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@supabase-workspace/stripe-core": "^1.0.0",
+    "@supabase-workspace/supabase-core": "^1.0.0",
+    "@supabase/supabase-js": "^2.84.0",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "postgres": "^3.4.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.10.0",
+    "drizzle-kit": "^0.31.7",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0"
+  }
 }

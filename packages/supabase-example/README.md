@@ -1,30 +1,33 @@
-# Supabase example Instance
+# Supabase example
 
-This package contains the Supabase client and database types for the example project instance.
-
-## Configuration
-
-The package uses environment variables from `.env`:
-- `VITE_PUBLIC_SUPABASE_URL` - Your Supabase project URL
-- `VITE_PUBLIC_SUPABASE_ANON_KEY` - Public anonymous key
-- `VITE_PUBLIC_SUPABASE_DATABASE_PASSWORD` - Database password
-- `SUPABASE_SERVICE_KEY` - Service role key (server-side only)
+Supabase client and types for example instance.
 
 ## Usage
 
 ```typescript
-import { supabase } from '@supabase-workspace/supabase-example';
+import { supabase, FRONTEND_URL } from '@supabase-workspace/supabase-example';
 
-// Query data
-const { data, error } = await supabase
-  .from('table_name')
-  .select('*');
+const { data } = await supabase.from('table').select('*');
 ```
 
-## Generate Types
+## Environment Variables
 
-To update database types from your Supabase schema:
+- `VITE_PUBLIC_SUPABASE_URL` - Supabase URL
+- `VITE_PUBLIC_SUPABASE_ANON_KEY` - Anon key
+- `PRODUCTION` - Production flag (true/false)
 
-```bash
-npx supabase gen types typescript --project-id abc123xyz > src/types.ts
-```
+## Stripe
+
+- \`STRIPE_SECRET_KEY\` - Stripe secret key
+- \`STRIPE_WEBHOOK_SECRET\` - Webhook secret
+
+Run \`yarn add-stripe\` to generate Edge Functions.
+
+## Drizzle ORM
+
+- \`DATABASE_URL\` - PostgreSQL connection URL
+
+Commands:
+- \`yarn drizzle:generate\` - Generate migrations
+- \`yarn drizzle:push\` - Push to database
+- \`yarn drizzle:studio\` - Open Drizzle Studio

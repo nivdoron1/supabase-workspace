@@ -1,0 +1,26 @@
+{
+    "name": "@supabase-workspace/stripe-core",
+    "version": "1.0.0",
+    "description": "Stripe service and Supabase Edge Function generator for Stripe webhooks",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "generate": "node dist/generate.js"
+    },
+    "keywords": [
+        "stripe",
+        "payment",
+        "supabase",
+        "edge-functions"
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "stripe": "^14.10.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.0",
+        "typescript": "^5.3.0"
+    }
+}
